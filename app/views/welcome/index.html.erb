@@ -1,0 +1,20 @@
+<div class="jumbotron">
+  <div class="starter-template">
+    <h1>Join London Sailing Club</h1>
+    <p class="lead"></p>
+  </div>
+
+  <% if !current_user %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <%= link_to "Login via Meetup", user_meetup_omniauth_authorize_path, class: "btn btn-primary" %>
+        </div>
+        <div class="col-md-6 border-left">
+          <p>Register with email</p>
+          <%= render "devise/registrations/new.html.erb" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

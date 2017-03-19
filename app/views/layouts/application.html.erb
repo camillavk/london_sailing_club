@@ -1,14 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>LondonSailingClub</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <title>LondonSailing</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- <a class="navbar-brand" href="/">
+          <%= image_tag "lsc.png" %>
+        </a> -->
+        <a class="navbar-brand" href="/">
+          London Sailing Club
+        </a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <% if current_user %>
+
+            <% end %>
+          </li>
+          <li>
+            <% if current_user %>
+
+            <% end %>
+          </li>
+          <li>
+            <% if current_user %>
+              <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+            <% end %>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div>
+  </nav>
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
+  <%= yield %>
+
+  <%= render "layouts/terms_conditions" %>
+  <%= render "layouts/privacy_policy" %>
 
 </body>
+<footer>
+  <div class="container">
+    <p>Copyright © London Sailing Club 2016. All Rights Reserved.
+    I accept the
+    <button type="button" class="email_confirm" data-toggle="modal" data-target="#termsConditions">
+      Terms of Service
+    </button>
+    and
+    <button type="button" class="email_confirm" data-toggle="modal" data-target="#privacyPolicy">
+      Privacy Policy
+    </button>
+    </p>
+  </div>
+</footer>
 </html>

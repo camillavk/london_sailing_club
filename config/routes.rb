@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+  # devise_scope :user do
+  #   get "users/oauth2/meetup" => "users/omniauth_callbacks#meetup", as: :meetup_authorise
+  #   post "users/oauth2/meetup" => "users/omniauth_callbacks#meetup", as: :meetup_authorise_post
+  #   get "users/oauth2/meetup/callback" => "users/omniauth_callbacks#meetup", as: :meetup_authorise_callback
+  #   post "users/oauth2/meetup/callback" => "users/omniauth_callbacks#meetup", as: :meetup_authorise_callback_post
+  # end
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
