@@ -1,0 +1,17 @@
+<h2>Basic info</h2>
+
+<%= form_for @user do |f| %>
+
+  <div class="form-group">
+    <%= f.email_field :email, placeholder: "Enter email address", class: "form-control", autofocus: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.telephone_field :number, placeholder: "Enter mobile number", class: "form-control" %>
+    <em><small>We occasionally send out last minute trip availability by SMS. You can opt out on your profile.</small></em>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Continue" %>
+  </div>
+<% end %>

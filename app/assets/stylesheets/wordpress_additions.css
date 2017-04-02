@@ -1,0 +1,119 @@
+/*
+* === Core elemements ===
+*/
+section, footer {
+    padding: 0px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.page body {font-family: 'Lato', sans-serif !important;}
+h1, h2, h3, h4, h5, h6, p {font-family: 'Lato', sans-serif !important;}
+h2 {text-align: center; color: #0A1526;}
+h3 {font-size: 24px;}
+
+/* .container {width:100%;}*/
+
+.post-content .entry-content p {font-weight: 300; color: #3E413D;}
+
+.vc_col-has-fill > .vc_column-inner {padding-top: 25px;}
+
+.vc_column_container > .vc_column-inner {
+    box-sizing: border-box;
+    padding-left: 25px;
+    padding-right: 25px;
+    width: 100%;
+}
+
+.btn-lsc { border: 1px solid #fff;}
+.btn-lsc .vc_btn3.vc_btn3-color-white, .btn-lsc .vc_btn3.vc_btn3-color-white.vc_btn3-style-flat {color: #fff; background: #0A1526;}
+
+.btn-lsc button:hover { color: #fff !important; background: #090F19 !important;}
+
+.less-wide-please {max-width: 1170px; margin: 0 auto;}
+
+/* ---- Alerts and Notices ---- */
+/*.alert {font-weight: 600; color: #AE4442; background-color: #F2DEDE;}
+.warning {font-weight: 600; color: #8A6D3B; background-color: #FCF8E3;}
+.info {font-weight: 600; color: #317099; background-color: #D9EDF7;}
+.notice {font-weight: 600; color: #3C763D; background-color: #DFF0D8;}*/
+.devise_alert {font-weight: 600; color: #AE4442; background-color: #F2DEDE;}
+/*
+* === Home ===
+*/
+
+/* --- RSS feed --- */
+.widget_rss .widgettitle {display:none;}
+
+.widget.widget_rss ul li .rsswidget {
+    font-size: 14px;
+    font-family: 'Lato';
+    line-height: 18px;}
+
+.widget.widget_rss ul li {
+    margin-bottom: 14px;
+}
+
+/* --- Zero To Hero --- */
+.vc_custom_1489435015723 h2 {margin-bottom: 5px;}
+.vc_custom_1490131837893 {background-color: #eaeaea !important}
+
+/* --- Pricing table --- */
+.member-fees {font-size: 36px; font-weight: 700 !important;}
+
+#popular {margin-bottom:0px;}
+.price-table {margin-top: 49px;}
+.price-table-btn {margin-top: 23px;}
+#neg-div {margin-top: -3px;}
+
+/*
+* === Pages ===
+*/
+
+.page-template-full-width-page .wpb_text_column h1 {color: #fff; font-weight:700; text-align:center;}
+
+/* ----- reg nav ------- */
+/*.reg_nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}*/
+/*
+.reg_nav li {
+  display: inline;
+  float: left;
+}*/
+
+.reg_nav {
+  display: table;
+  width: 80%;
+  list-style: none;
+}
+.reg_nav li {
+  display: table-cell;
+  text-align: center;
+}
+.reg_nav li h4 {
+  display: block;
+}
+
+.reg_nav li:first-child {
+    text-align: left;
+}
+.reg_nav li:last-child {
+    text-align: right;
+}
+
+.border-bottom {
+  border-bottom: 1px solid black !important;
+}
+
+
+/*li .left {
+  float: left;
+}
+
+li .right {
+  float: right;
+}*/

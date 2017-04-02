@@ -28,8 +28,8 @@ feature "Registration" do
   end
 
   def when_they_complete_the_email_registration
-    fill_in :user_email, with: "example@email.com"
-    fill_in :user_password, with: "password"
+    fill_in :user_email, with: "example@email.com", match: :first
+    fill_in :user_password, with: "password", match: :first
     fill_in :user_password_confirmation, with: "password"
     fill_in :user_number, with: "0777654326"
   end
@@ -39,7 +39,7 @@ feature "Registration" do
   end
 
   def then_they_should_see_a_success_message
-    expect(page).to have_content "Welcome! You have signed up successfully."
+    expect(page).to have_content "Sign Out"
   end
 
   def when_they_click_the_login_via_meetup_button
@@ -51,6 +51,6 @@ feature "Registration" do
   end
 
   def then_they_are_asked_for_more_basic_info
-    expect(page).to have_content "Successfully authenticated from Meetup account"
+    expect(page).to have_content "Basic info"
   end
 end

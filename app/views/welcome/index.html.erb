@@ -1,20 +1,51 @@
-<div class="jumbotron">
-  <div class="starter-template">
-    <h1>Join London Sailing Club</h1>
-    <p class="lead"></p>
-  </div>
+<% if !current_user %>
+  <br/>
+  <%= render "registration_navigation" %>
 
-  <% if !current_user %>
+  <div class="vc_row wpb_row vc_row-fluid vc_custom_1490131837893 vc_row-has-fill">
+    <br/>
+    <div class="wpb_column vc_column_container vc_col-sm-12">
+      <div class="vc_column-inner">
+        <div class="wpb_wrapper">
+          <div class="vc_row wpb_row vc_inner vc_row-fluid less-wide-please">
+            <div class="wpb_column vc_column_container vc_col-sm-12">
+              <div class="vc_column-inner">
+                <div class="wpb_wrapper">
+                  <div class="wpb_text_column wpb_content_element">
+                    <div class="wpb_wrapper">
+                      <h2>Join London Sailing Club</h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <br/>
+
     <div class="container">
       <div class="row">
         <div class="col-md-6">
           <%= link_to "Login via Meetup", user_meetup_omniauth_authorize_path, class: "btn btn-primary" %>
         </div>
         <div class="col-md-6 border-left">
-          <p>Register with email</p>
-          <%= render "devise/registrations/new.html.erb" %>
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#register" aria-controls="register" role="tab" data-toggle="tab">Register with email</a></li>
+            <li role="presentation"><a href="#login" aria-controls="login" role="tab" data-toggle="tab">Already a member?</a></li>
+          </ul>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="register">
+              <%= render "devise/registrations/new.html.erb" %>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="login">
+              <%= render "devise/sessions/new.html.erb" %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>
