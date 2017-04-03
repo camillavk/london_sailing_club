@@ -1,0 +1,10 @@
+<div id="selected_plan" class="container">
+  <strong>Selected Membership</strong>
+  <% if @plan %>
+    <%= "#{@plan} membership" %>
+  <% end %>
+  <%= "£#{@price}/year" %></br>
+  <button type="button" class="link" data-toggle="modal" data-target="#changePlan">
+    Click here to change
+  </button>
+</div>

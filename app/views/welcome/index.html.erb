@@ -1,3 +1,7 @@
+<%= render "change_plan_modal" %>
+
+<%= render "selected_plan" %>
+
 <% if !current_user %>
   <br/>
   <%= render "registration_navigation" %>
@@ -48,4 +52,6 @@
       </div>
     </div>
   </div>
+<% else %>
+
 <% end %>

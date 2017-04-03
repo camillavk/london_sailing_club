@@ -9,3 +9,13 @@
 .border-left {
     border-left: 1px solid black;
 }
+
+#selected_plan {
+  display: inline-block;
+  position: absolute;
+  left: 80%;
+  background-color: #eaeaea;
+  width: 15%;
+  text-align: center;
+  
+}

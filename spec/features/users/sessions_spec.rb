@@ -11,9 +11,43 @@ feature "Sessions" do
     they_are_able_to_logout
   end
 
+  scenario "it knows what payment plan you have selected" do
+    given_a_user_has_come_from_wordpress
+    when_they_are_on_the_registration_page
+    their_selected_plan_is_visible
+  end
+
+  scenario "it allows you to change your selected payment plan" do
+    given_a_user_has_come_from_wordpress
+    when_they_are_on_the_registration_page
+    when_they_change_their_plan_selection
+    their_new_selected_plan_is_visible
+  end
+
   def given_a_user_is_on_the_registration_page
     user = create(:user)
     visit "/"
+  end
+
+  def given_a_user_has_come_from_wordpress
+    visit "/?plan=free"
+  end
+
+  def when_they_are_on_the_registration_page
+    visit "/"
+  end
+
+  def their_selected_plan_is_visible
+    expect(page).to have_content "Free membership"
+  end
+
+  def when_they_change_their_plan_selection
+    click_button "Click here to change"
+    click_link "Patron member"
+  end
+
+  def their_new_selected_plan_is_visible
+    expect(page).to have_content "Patron membership"
   end
 
   def and_they_click_the_login_button
