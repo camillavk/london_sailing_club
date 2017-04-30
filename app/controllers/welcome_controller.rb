@@ -3,9 +3,10 @@ class WelcomeController < ApplicationController
   before_action :set_plan_price
 
   def index
-    if current_user && !current_user.email?
+    if incomplete_user?
       redirect_to edit_user_path(current_user)
-    else
+    elsif ready_for_payment?
+      redirect_to gocardless_choice_url
     end
   end
 
@@ -31,5 +32,17 @@ class WelcomeController < ApplicationController
              else
                0
              end
+  end
+
+  def user_complete?
+    current_user && current_user.email?
+  end
+
+  def incomplete_user?
+    current_user && !current_user.email?
+  end
+
+  def ready_for_payment?
+    user_complete? && @plan.present?
   end
 end

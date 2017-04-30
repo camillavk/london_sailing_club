@@ -17,5 +17,10 @@
   background-color: #eaeaea;
   width: 15%;
   text-align: center;
-  
+
+}
+
+footer {
+  position: absolute !important;
+  bottom: 0 !important;
 }
