@@ -29,18 +29,6 @@ feature "Sessions" do
     visit "/"
   end
 
-  def given_a_user_has_come_from_wordpress
-    visit "/?plan=free"
-  end
-
-  def when_they_are_on_the_registration_page
-    visit "/"
-  end
-
-  def their_selected_plan_is_visible
-    expect(page).to have_content "Free membership"
-  end
-
   def when_they_change_their_plan_selection
     click_button "Click here to change"
     click_link "Patron member"
@@ -62,17 +50,6 @@ feature "Sessions" do
     end
     click_button "Login"
     expect(page).to have_content "Sign Out"
-  end
-
-  def given_a_user_is_logged_in
-    user = create(:user)
-    visit "/"
-    click_link "Already a member?"
-    within all(".new_user").last do
-      find("#user_email").set "john@email.com"
-      find("#user_password").set "password"
-    end
-    click_button "Login"
   end
 
   def when_they_click_the_logout_link

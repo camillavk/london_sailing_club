@@ -18,10 +18,6 @@ feature "Registration" do
     then_they_are_asked_for_more_basic_info
   end
 
-  def given_a_user_is_on_the_registration_page
-    visit "/"
-  end
-
   def they_should_have_two_registration_options_available
     expect(page).to have_content("Register with email")
     expect(page).to have_link("Login via Meetup")
