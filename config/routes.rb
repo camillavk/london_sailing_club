@@ -13,9 +13,9 @@ Rails.application.routes.draw do
 
   get 'welcome/change_plan' => 'welcome#change_plan'
 
-  get "gocardless/choice"
+  get "gocardless/mandate_and_payment"
 
-  get "gocardless/complete"
+  get "gocardless/complete_mandate"
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :users, only: [:show, :edit, :update]

@@ -5,33 +5,39 @@ class WelcomeController < ApplicationController
   def index
     if incomplete_user?
       redirect_to edit_user_path(current_user)
+    elsif active_member?
+      redirect_to user_path(current_user)
     elsif ready_for_payment?
-      redirect_to gocardless_choice_url
+      redirect_to gocardless_mandate_and_payment_url
     end
   end
 
   def change_plan
     session[:plan] = params[:plan]
-    redirect_to request.referer
+    set_plan_price
+    redirect_to request.referer || root_url
   end
 
   private
 
   def set_selected_plan
-    session[:plan] ||= params[:plan]
+    session[:plan] = params[:plan] if params[:plan].present?
     @plan = session[:plan].present? ? session[:plan].capitalize : nil
   end
 
   def set_plan_price
-    @price = if @plan == "pay_as_you_sail"
-               12
-             elsif @plan == "Standard"
-               24
-             elsif @plan == "Patron"
-               36
-             else
-               0
-             end
+    session[:price_in_cents] = if @plan == "Pay_as_you_sail"
+                                 1200
+                               elsif @plan == "Standard"
+                                 2400
+                               elsif @plan == "One-off"
+                                 2600
+                               elsif @plan == "Patron"
+                                 3600
+                               else
+                                 0
+                               end
+    @price = session[:price_in_cents]
   end
 
   def user_complete?
@@ -44,5 +50,11 @@ class WelcomeController < ApplicationController
 
   def ready_for_payment?
     user_complete? && @plan.present?
+  end
+
+  def active_member?
+    user_complete? &&
+    !current_user.payment_date.nil? &&
+    current_user.payment_date > 1.year.ago
   end
 end

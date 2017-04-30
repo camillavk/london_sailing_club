@@ -4,12 +4,15 @@ class UsersController < ActionController::Base
     @user = current_user
   end
 
-  def update  
+  def update
     if @user.update_attributes(permitted_attributes)
       redirect_to root_url
     else
 
     end
+  end
+
+  def show
   end
 
   private

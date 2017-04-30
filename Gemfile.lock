@@ -109,6 +109,8 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
     minitest (5.10.1)
+    money (6.9.0)
+      i18n (>= 0.6.4, < 0.9)
     multi_json (1.12.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -272,6 +274,7 @@ DEPENDENCIES
   gocardless_pro
   jbuilder (~> 2.0)
   jquery-rails
+  money
   omniauth-meetup
   pg
   pry-remote

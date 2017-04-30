@@ -27,6 +27,7 @@ gem "devise"
 gem "omniauth-meetup"
 
 gem "gocardless_pro"
+gem "money"
 
 # gem "less-rails"
 
