@@ -18,6 +18,11 @@ class GocardlessController < ApplicationController
     collect_payment
   end
 
+  def cancel
+    @gocardless_client.payments.cancel(params[:payment_id])
+    redirect_to request.referer
+  end
+
   private
 
   def load_gocardless_client

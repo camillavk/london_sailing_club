@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   get "gocardless/complete_mandate"
 
+  get "gocardless/cancel"
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :users, only: [:show, :edit, :update]
 

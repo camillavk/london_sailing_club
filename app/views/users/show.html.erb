@@ -1,1 +1,12 @@
 <h2>Profile</h2>
+
+<h2>Payments</h2>
+<% @payments.each do |payment| %>
+  <p>Amount: <%= Money.new(payment.amount, payment.currency).format %></p>
+  <p>Status: <%= payment.status %></p>
+  <p>Charge date: <%= payment.charge_date %></p>
+  <p>Created at:<%= payment.created_at.to_date %></p>
+  <% if payment.status == 'pending_submission' %>
+    <%= link_to 'Cancel payment', { controller: 'gocardless', action: 'cancel', payment_id: "#{payment.id}" }, data: {confirm: 'Are you sure you want to cancel your payment?'} %>
+  <% end %>
+<% end %>
