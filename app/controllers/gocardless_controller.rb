@@ -56,33 +56,9 @@ class GocardlessController < ApplicationController
   def collect_payment
     if session[:plan] == 'free'
       return
-    elsif session[:plan] == 'one-off'
-      one_off_payment
     else
       subscription_payment
     end
-  end
-
-  def one_off_payment
-    payment = @gocardless_client.payments.create(
-      params: {
-        amount: "#{session[:price_in_cents]}",
-        currency: 'GBP',
-        links: {
-          mandate: "#{current_user.mandate}"
-        },
-        metadata: {
-          plan: "#{session[:plan]}"
-        }
-      },
-      headers: {
-        'Idempotency-Key' => "#{session[:plan]}_#{Date.today}"
-      }
-    )
-    current_user.update_attributes payment_date: Date.today,
-                                   payment_amount: "#{Money.new(session[:price_in_cents], 'GBP')}",
-                                   last_payment_id: "#{payment.id}",
-                                   payment_type: 'GoCardless'
   end
 
   def subscription_payment
@@ -102,7 +78,7 @@ class GocardlessController < ApplicationController
         'Idempotency-Key': "#{session[:plan]}_#{Date.today}"
       }
     )
-    binding.pry
+
     current_user.update_attributes payment_date: Date.today,
                                    payment_amount: "#{Money.new(session[:price_in_cents], 'GBP')}",
                                    subscription_id: "#{subscription.id}",
