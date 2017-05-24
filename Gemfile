@@ -28,6 +28,7 @@ gem "omniauth-meetup"
 
 gem "gocardless_pro"
 gem "money"
+gem "stripe", :git => "https://github.com/stripe/stripe-ruby"
 
 # gem "less-rails"
 

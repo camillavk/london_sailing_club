@@ -1,11 +1,11 @@
 feature "Payment" do
-  scenario "takes the payment details from cookies/cache" do
+  xscenario "takes the payment details from cookies/cache" do
     given_a_user_has_come_from_wordpress
     when_they_login
     their_selected_plan_is_visible
   end
 
-  scenario "prefills information from user details" do
+  xscenario "prefills information from user details" do
     given_a_user_is_logged_in
     when_they_have_selected_a_payment_plan
     when_they_are_redirected_to_gocardless

@@ -10,9 +10,19 @@
       <div class="modal-body">
         <%= link_to content_tag(:span, "Patron member"), :action => "change_plan", :plan => "patron" %></br>
         <%= link_to content_tag(:span, "Standard member"), :action => "change_plan", :plan => "standard" %></br>
+        <%= form_tag stripe_charges_path do %>
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description="One year membership"
+            data-amount="2400"
+            data-locale="auto"
+            data-email="<%= current_user.email if current_user.present? %>"
+            data-currency="GBP"></script>
+          <button class="button-stripe" type="submit">
+            One year membership
+          </button>
+        <% end %>
         <%= link_to content_tag(:span, "One year member"), :action => "change_plan", :plan => "one-off" %></br>
-        <%= link_to content_tag(:span, "Pay as you sail"), :action => "change_plan", :plan => "pay_as_you_sail" %></br>
-        <%= link_to content_tag(:span, "Free member"), :action => "change_plan", :plan => "free" %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

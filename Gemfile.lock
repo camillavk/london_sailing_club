@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/stripe/stripe-ruby
+  revision: f87e1ed219d61b616a8d19cac2a6e0e9bc5522ea
+  specs:
+    stripe (2.9.0)
+      faraday (~> 0.9)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -285,6 +292,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
+  stripe!
   therubyracer
   turbolinks
   twitter-bootstrap-rails

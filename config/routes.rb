@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   get "gocardless/cancel"
 
+  resources :stripe_charges, only: [:new, :create]
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :users, only: [:show, :edit, :update]
 
