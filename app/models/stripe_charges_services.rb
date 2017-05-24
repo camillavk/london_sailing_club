@@ -47,6 +47,6 @@ class StripeChargesServices
   end
 
   def order_amount
-    2400
+    session[:price_in_cents]
   end
 end

@@ -6,6 +6,7 @@ class StripeChargesController < ApplicationController
 
   def create
     StripeChargesServices.new(charges_params, current_user).call
+    update_user_with_payment_details
     redirect_to user_path(current_user)
   end
 
@@ -17,5 +18,11 @@ class StripeChargesController < ApplicationController
 
   def catch_exception(exception)
     flash[:error] = exception.message
+  end
+
+  def update_user_with_payment_details
+    current_user.update_attributes payment_date: Date.today,
+                                   payment_amount: "#{Money.new(session[:price_in_cents], 'GBP')}",
+                                   payment_type: 'Stripe'
   end
 end
