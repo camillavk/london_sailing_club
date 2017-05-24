@@ -30,8 +30,6 @@ class WelcomeController < ApplicationController
                                  1200
                                elsif @plan == "Standard"
                                  2400
-                               elsif @plan == "One-off"
-                                 2600
                                elsif @plan == "Patron"
                                  3600
                                else

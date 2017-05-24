@@ -22,7 +22,7 @@ class StripeChargesController < ApplicationController
 
   def update_user_with_payment_details
     current_user.update_attributes payment_date: Date.today,
-                                   payment_amount: "#{Money.new(session[:price_in_cents], 'GBP')}",
+                                   payment_amount: "#{Money.new(2600, 'GBP')}",
                                    payment_type: 'Stripe'
   end
 end
