@@ -27,7 +27,7 @@ class GocardlessController < ApplicationController
 
   def load_gocardless_client
     @gocardless_client ||= GoCardlessPro::Client.new(
-      access_token: Rails.application.secrets.gocardless_token,
+      access_token: Rails.application.secrets.gocardless_token || ENV['gocardless_token'],
       environment: :sandbox
     )
   end

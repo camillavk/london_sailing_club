@@ -249,8 +249,12 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   # config.omniauth :meetup, ENV['meetup_key'], ENV['meetup_secret']
-  config.omniauth :meetup, Rails.application.secrets.meetup_key, Rails.application.secrets.meetup_secret,
-                  callback_url: "http://localhost:3000/users/auth/meetup/callback"
+  if Rails.env.development?
+    config.omniauth :meetup, Rails.application.secrets.meetup_key, Rails.application.secrets.meetup_secret,
+                    callback_url: "http://localhost:3000/users/auth/meetup/callback"
+  else
+    config.omniauth :meetup, ENV["meetup_key"], ENV["meetup_secret"],
+                    callback_url: "http://localhost:3000/users/auth/meetup/callback"
                   # client_options: { :ssl => { :verify => !Rails.env.development? } },
                   # strategy_class: OmniAuth::Strategies::Meetup
   # https://localhost:3000/users/auth/meetup/callback

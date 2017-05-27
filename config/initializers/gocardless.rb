@@ -10,7 +10,14 @@
 # if Rails.env.development?
 #   GoCardless.environment = :sandbox
 # end
-gocardless = GoCardlessPro::Client.new(
-  access_token: Rails.application.secrets.gocardless_token,
-  environment: :sandbox
-)
+if Rails.env.development?
+  gocardless = GoCardlessPro::Client.new(
+    access_token: Rails.application.secrets.gocardless_token,
+    environment: :sandbox
+  )
+else
+  gocardless = GoCardlessPro::Client.new(
+    access_token: ENV['gocardless_token'],
+    environment: :sandbox
+  )
+end
