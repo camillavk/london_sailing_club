@@ -88,7 +88,6 @@ feature "User Profile" do
   end
 
   def then_they_should_see_multiple_payment_details
-    expect(page).to have_text(/Amount/, minimum: 2)
-    expect(page).to have_text(/Status/, minimum: 2)
+    expect(page).to have_selector('table tr', :minimum => 3)
   end
 end
