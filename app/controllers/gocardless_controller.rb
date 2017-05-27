@@ -33,11 +33,12 @@ class GocardlessController < ApplicationController
   end
 
   def create_mandate
+    success_url = Rail.env.development? ? 'http:/localhost:3000/gocardless/complete_mandate' : 'https://london-sailing-club.herokuapp.com/gocardless/complete_mandate'
     @redirect_flow = @gocardless_client.redirect_flows.create(
       params: {
         description: 'London Sailing Club Membership',
         session_token: "#{current_user.id}",
-        success_redirect_url: 'http://localhost:3000/gocardless/complete_mandate', # Success page
+        success_redirect_url: success_url, # Success page
         prefilled_customer: {
           email: current_user.email
         }
