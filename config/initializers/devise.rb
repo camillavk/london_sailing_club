@@ -255,6 +255,7 @@ Devise.setup do |config|
   else
     config.omniauth :meetup, ENV["meetup_key"], ENV["meetup_secret"],
                     callback_url: "http://localhost:3000/users/auth/meetup/callback"
+  end
                   # client_options: { :ssl => { :verify => !Rails.env.development? } },
                   # strategy_class: OmniAuth::Strategies::Meetup
   # https://localhost:3000/users/auth/meetup/callback
