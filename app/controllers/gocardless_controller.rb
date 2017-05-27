@@ -3,7 +3,10 @@ class GocardlessController < ApplicationController
 
   def mandate_and_payment
     if current_user.mandate?
-      collect_payment
+      begin
+        collect_payment
+      rescue GoCardlessPro::InvalidStateError => error
+      end
       render 'complete_mandate'
     else
       create_mandate
