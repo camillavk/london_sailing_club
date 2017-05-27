@@ -27,6 +27,19 @@ feature "User Profile" do
     then_they_should_see_multiple_payment_details
   end
 
+  scenario "they can opt out of SMS alerts" do
+    given_a_user_is_on_their_profile_page
+    when_they_click_on_the_opt_out_sms_checkbox
+    then_they_will_be_opted_out_of_sms_alerts
+  end
+
+  scenario "they can opt in to SMS alerts and add number" do
+    given_a_user_is_on_their_profile_page
+    when_they_click_on_the_opt_in_sms_checkbox
+    and_they_provide_a_number
+    then_they_will_be_opted_in_to_sms_alerts
+  end
+
   def when_they_visit_their_profile_page
     VCR.use_cassette('gocardless_client') do
       visit user_path(@user)
@@ -89,5 +102,25 @@ feature "User Profile" do
 
   def then_they_should_see_multiple_payment_details
     expect(page).to have_selector('table tr', :minimum => 3)
+  end
+
+  def when_they_click_on_the_opt_out_sms_checkbox
+    uncheck "user_sms_alerts"
+  end
+
+  def when_they_click_on_the_opt_in_sms_checkbox
+    check "user_sms_alerts"
+  end
+
+  def then_they_will_be_opted_out_of_sms_alerts
+    expect(find(:checkbox, "user_sms_alerts")).to_not be_checked
+  end
+
+  def and_they_provide_a_number
+    fill_in :user_number, with: "0777654326"
+  end
+
+  def then_they_will_be_opted_in_to_sms_alerts
+    expect(find(:checkbox, "user_sms_alerts")).to be_checked
   end
 end

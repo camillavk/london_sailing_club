@@ -7,6 +7,18 @@
       <dd><%= @user.email %></dd>
       <dt>Name:</dt>
       <dd><%= @user.name %></dd>
+      <dt>SMS Alerts:</dt>
+      <dd>
+        <%= form_for(@user, :remote => true) do |f| %>
+          <%= f.telephone_field :number, placeholder: "Enter mobile number", class: "form-control", :onchange => 'this.form.submit()' %>
+        <% end %>
+      </dd>
+      <dd>
+        <%= form_for(@user, :remote => true) do |f| %>
+          <%= f.check_box :sms_alerts, :onchange => 'this.form.submit()' %>
+          <%= f.label "Yes, I want to receive SMS alerts of upcoming trips" %>
+        <% end %>
+      </dd>
     </dl>
   </div>
 </div>
