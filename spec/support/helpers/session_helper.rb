@@ -16,7 +16,7 @@ module SessionHelper
   end
 
   def given_a_user_is_logged_in
-    user = create(:user)
+    @user = create(:user)
     visit "/"
     click_link "Already a member?"
     within all(".new_user").last do

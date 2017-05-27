@@ -24,7 +24,8 @@ class UsersController < ApplicationController
   end
 
   def load_payments
-    load_gocardless_payments + load_stripe_payments
+    return if @user.gocardless_id.nil? && @user.stripe_token.nil?
+    Array(load_gocardless_payments) | Array(load_stripe_payments)
   end
 
   def load_gocardless_client
@@ -35,6 +36,7 @@ class UsersController < ApplicationController
   end
 
   def load_gocardless_payments
+    return if @user.gocardless_id.nil?
     load_gocardless_client
     payments = @gocardless_client.payments
                                  .list(params: { customer: @user.gocardless_id })
@@ -45,6 +47,7 @@ class UsersController < ApplicationController
   end
 
   def load_stripe_payments
+    return if @user.stripe_token.nil?
     payments = Stripe::Charge.list(customer: @user.stripe_token).data
     stripe_payments = []
     payments.each { |payment| stripe_payments << [payment, "stripe"] }

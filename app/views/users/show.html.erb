@@ -1,12 +1,19 @@
 <h2>Profile</h2>
 
-<h2>Payments</h2>
-<% @payments.each do |payment| %>
-  <p>Amount: <%= Money.new(payment[0].amount, payment[0].currency).format %></p>
-  <p>Status: <%= payment[0].status %></p>
-  <p>Charge date: <%= payment[1] == "gocardless" ? payment[0].charge_date : Time.at(payment[0].created).to_datetime %></p>
+<p><%= @user.email %></p>
 
-  <% if payment[0].status == 'pending_submission' %>
-    <%= link_to 'Cancel payment', { controller: 'gocardless', action: 'cancel', payment_id: "#{payment.id}" }, data: {confirm: 'Are you sure you want to cancel your payment?'} %>
+<h2>Payments</h2>
+<% if @payments.nil? %>
+  <p>You haven't made any payments yet</p>
+  <%= link_to "Click here to choose a plan", root_url %>
+<% else %>
+  <% @payments.each do |payment| %>
+    <p>Amount: <%= Money.new(payment[0].amount, payment[0].currency).format %></p>
+    <p>Status: <%= payment[0].status %></p>
+    <p>Charge date: <%= payment[1] == "gocardless" ? payment[0].charge_date : Time.at(payment[0].created).to_datetime %></p>
+
+    <% if payment[0].status == 'pending_submission' %>
+      <%= link_to 'Cancel payment', { controller: 'gocardless', action: 'cancel', payment_id: "#{payment.id}" }, data: {confirm: 'Are you sure you want to cancel your payment?'} %>
+    <% end %>
   <% end %>
 <% end %>
