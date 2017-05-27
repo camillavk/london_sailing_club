@@ -5,6 +5,8 @@ class WelcomeController < ApplicationController
   def index
     if incomplete_user?
       redirect_to edit_user_path(current_user)
+    elsif ready_for_payment?
+      redirect_to gocardless_mandate_and_payment_url
     end
   end
 
