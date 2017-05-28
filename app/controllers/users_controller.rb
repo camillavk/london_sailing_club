@@ -6,10 +6,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update_attributes(permitted_attributes)
+    @current_page = request.env["HTTP_REFERER"]
+    if @user.update_attributes(permitted_attributes) && @current_page.include?("/edit")
       redirect_to root_url
     else
-
+      redirect_to user_url(@user)
     end
   end
 
