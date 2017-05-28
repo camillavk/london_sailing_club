@@ -16,8 +16,4 @@ class User < ActiveRecord::Base
   def email_required?
     super && provider.blank?
   end
-
-  def name
-    surname ? first_name + surname : first_name
-  end
 end

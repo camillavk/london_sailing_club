@@ -5,8 +5,18 @@
     <dl>
       <dt>Email:</dt>
       <dd><%= @user.email %></dd>
-      <dt>Name:</dt>
-      <dd><%= @user.name %></dd>
+      <dt>First Name:</dt>
+      <dd>
+        <%= form_for(@user, :remote => true) do |f| %>
+          <%= f.text_field :first_name, placeholder: "Name", class: "form-control", :onchange => 'this.form.submit()' %>
+        <% end %>
+      </dd>
+      <dt>Surname:</dt>
+      <dd>
+        <%= form_for(@user, :remote => true) do |f| %>
+          <%= f.text_field :surname, placeholder: "Name", class: "form-control", :onchange => 'this.form.submit()' %>
+        <% end %>
+      </dd>
       <dt>SMS Alerts:</dt>
       <dd>
         <%= form_for(@user, :remote => true) do |f| %>

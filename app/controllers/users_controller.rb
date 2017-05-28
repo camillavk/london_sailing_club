@@ -56,6 +56,6 @@ class UsersController < ApplicationController
   end
 
   def permitted_attributes
-    params.require(:user).permit(:email, :number, :sms_alerts)
+    params.require(:user).permit(:email, :number, :sms_alerts, :first_name, :surname)
   end
 end
