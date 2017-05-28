@@ -12,6 +12,15 @@ class EventsController < ApplicationController
     render "event"
   end
 
+  def rsvp
+    if current_user.uid.present?
+      JSON.parse(`curl -d "key=#{Rails.application.secrets.meetup_api_key}&sign=true&event_id=#{params["event_id"]}&rsvp=yes&member_id=#{current_user.uid}" https://api.meetup.com/2/rsvp/`)
+    else
+      JSON.parse(`curl -d "key=#{Rails.application.secrets.meetup_api_key}&sign=true&event_id=#{params["event_id"]}&rsvp=yes" https://api.meetup.com/2/rsvp/`)
+    end
+    redirect_to request.referer
+  end
+
   private
 
   def load_meetup_client

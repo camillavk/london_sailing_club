@@ -13,6 +13,8 @@
       </dd>
       <dt>RSVPs</dt>
       <dd><%= event["yes_rsvp_count"] %>/<%= event["rsvp_limit"] %></dd>
+      <dt>RSVP</dt>
+      <dd><%= link_to "RSVP", event_rsvp_path(event["id"]) %></dd>
     </dl>
     <%= image_tag event["photo_url"] %>
   </div>
