@@ -5,9 +5,11 @@ class GocardlessController < ApplicationController
     if current_user.mandate?
       begin
         collect_payment
-      rescue GoCardlessPro::InvalidStateError => error
+        render 'complete_mandate'
+      rescue => e
+        flash[:error] = "Oops"
+        session.delete(:plan)
       end
-      render 'complete_mandate'
     else
       create_mandate
       redirect_to @redirect_flow.redirect_url
@@ -79,7 +81,7 @@ class GocardlessController < ApplicationController
         }
       },
       headers: {
-        'Idempotency-Key': "#{session[:plan]}_#{Date.today}"
+        'Idempotency-Key': "#{session[:plan]}_#{Date.today}_#{current_user.mandate}"
       }
     )
 
@@ -87,6 +89,8 @@ class GocardlessController < ApplicationController
                                    payment_amount: "#{Money.new(session[:price_in_cents], 'GBP')}",
                                    subscription_id: "#{subscription.id}",
                                    payment_type: 'GoCardless'
+
+    session.delete(:plan)
   end
 
   def update_user_with_payment_mandate

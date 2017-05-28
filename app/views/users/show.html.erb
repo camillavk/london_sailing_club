@@ -45,7 +45,7 @@
           <td><%= payment[1] == "gocardless" ? payment[0].charge_date : Time.at(payment[0].created).to_datetime %></td>
           <td>
             <% if payment[0].status == 'pending_submission' %>
-              <%= link_to 'Cancel payment', { controller: 'gocardless', action: 'cancel', payment_id: "#{payment.id}" }, data: {confirm: 'Are you sure you want to cancel your payment?'} %>
+              <%= link_to 'Cancel payment', { controller: 'gocardless', action: 'cancel', payment_id: "#{payment[0].id}" }, data: {confirm: 'Are you sure you want to cancel your payment?'} %>
             <% end %>
           </td>
         </tr>
