@@ -1,0 +1,19 @@
+<br/>
+<div class="panel panel-default">
+  <div class="panel-heading"><%= @event["name"] %></div>
+  <div class="panel-body">
+    <dl>
+      <dt>Created at</dt>
+      <dd>
+        <!-- <%= Time.at(@event["created"]).to_date %> -->
+      </dd>
+      <dt>Description</dt>
+      <dd>
+        <%= @event["description"].html_safe %>
+      </dd>
+      <dt>RSVPs</dt>
+      <dd><%= @event["yes_rsvp_count"] %>/<%= @event["rsvp_limit"] %></dd>
+    </dl>
+    <%= image_tag @event["photo_url"] %>
+  </div>
+</div>

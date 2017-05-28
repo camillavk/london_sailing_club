@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+  <div class="panel-heading"><%= event["name"] %></div>
+  <div class="panel-body">
+    <dl>
+      <dt>Created at</dt>
+      <dd>
+        <%= Time.at(event["created"]).to_date %>
+      </dd>
+      <dt>Description</dt>
+      <dd>
+        <%=h truncate(event["description"], length: 200, escape: false) %>
+        <%= link_to "Read more", event_url(event["id"], group: event["group"]["urlname"]) %>
+      </dd>
+      <dt>RSVPs</dt>
+      <dd><%= event["yes_rsvp_count"] %>/<%= event["rsvp_limit"] %></dd>
+    </dl>
+    <%= image_tag event["photo_url"] %>
+  </div>
+</div>

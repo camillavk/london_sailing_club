@@ -110,6 +110,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    meetup_client (1.0.0)
     method_source (0.8.2)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
@@ -281,6 +282,7 @@ DEPENDENCIES
   gocardless_pro
   jbuilder (~> 2.0)
   jquery-rails
+  meetup_client
   money
   omniauth-meetup
   pg

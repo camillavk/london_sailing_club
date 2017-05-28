@@ -21,6 +21,8 @@ Rails.application.routes.draw do
 
   resources :stripe_charges, only: [:new, :create]
 
+  resources :events
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :users, only: [:show, :edit, :update]
 
