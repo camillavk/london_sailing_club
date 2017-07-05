@@ -1,23 +1,22 @@
-</br>
-<div class="panel panel-info">
-  <div class="panel-heading"><h2>Details</h2></div>
-  <div class="panel-body">
-    <dl>
-      <dt>Email:</dt>
-      <dd><%= @user.email %></dd>
-      <dt>First Name:</dt>
+<div class='container profile_container'>
+  <h2 class="grey_font title">Edit Profile</h2>
+  <div class='edit-profile'>
+    <dl class="dl-horizontal">
+      <dt>Email</dt>
+      <dd class='email'><%= @user.email %></dd>
+      <dt>First Name</dt>
       <dd>
         <%= form_for(@user, :remote => true) do |f| %>
           <%= f.text_field :first_name, placeholder: "Name", class: "form-control", :onchange => 'this.form.submit()' %>
         <% end %>
       </dd>
-      <dt>Surname:</dt>
+      <dt>Surname</dt>
       <dd>
         <%= form_for(@user, :remote => true) do |f| %>
-          <%= f.text_field :surname, placeholder: "Name", class: "form-control", :onchange => 'this.form.submit()' %>
+          <%= f.text_field :surname, placeholder: "Surname", class: "form-control", :onchange => 'this.form.submit()' %>
         <% end %>
       </dd>
-      <dt>SMS Alerts:</dt>
+      <dt>SMS Alerts</dt>
       <dd>
         <%= form_for(@user, :remote => true) do |f| %>
           <%= f.telephone_field :number, placeholder: "Enter mobile number", class: "form-control", :onchange => 'this.form.submit()' %>
@@ -31,36 +30,38 @@
       </dd>
     </dl>
   </div>
-</div>
 
-<div class="panel panel-default">
-  <div class="panel-heading"><h2>Payments</h2></div>
-  <% if @payments.nil? %>
-    <div class="panel-body">
-      <p>You haven't made any payments yet</p>
-      <%= link_to "Click here to choose a plan", root_url %>
-    </div>
-  <% else %>
-    <table class="table table-hover">
-      <tr>
-        <th>Amount</th>
-        <th>Status</th>
-        <th>Charge date</th>
-        <th></th>
-      </tr>
-      <% @payments.each do |payment| %>
+  <h2 class="grey_font title">Payments</h2>
+  <div class="panel panel-default">
+    <% if @payments.nil? %>
+      <div class="panel-body">
+        <p>You haven't made any payments yet</p>
+        <%= link_to "Click here to choose a plan", root_url %>
+      </div>
+    <% else %>
+      <table class="table table-hover">
         <tr>
-          <td><%= Money.new(payment[0].amount, payment[0].currency).format %></td>
-          <td><%= payment[0].status %></td>
-          <td><%= payment[1] == "gocardless" ? payment[0].charge_date : Time.at(payment[0].created).to_date %></td>
-          <td>
-            <% if payment[0].status == 'pending_submission' %>
-              <%= link_to 'Cancel payment', { controller: 'gocardless', action: 'cancel', payment_id: "#{payment[0].id}" }, data: {confirm: 'Are you sure you want to cancel your payment?'} %>
-            <% end %>
-          </td>
+          <th>Amount</th>
+          <th>Status</th>
+          <th>Charge date</th>
+          <th></th>
         </tr>
-      <% end %>
-    </table>
-  <% end %>
+        <% @payments.each do |payment| %>
+          <tr>
+            <td><%= Money.new(payment[0].amount, payment[0].currency).format %></td>
+            <td><%= payment[0].status %></td>
+            <td><%= payment[1] == "gocardless" ? payment[0].charge_date : Time.at(payment[0].created).to_date %></td>
+            <td>
+              <% if payment[0].status == 'pending_submission' %>
+                <%= link_to 'Cancel payment', { controller: 'gocardless', action: 'cancel', payment_id: "#{payment[0].id}" }, data: {confirm: 'Are you sure you want to cancel your payment?'} %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
+  </div>
+  </br>
+
 </div>
 </br>
