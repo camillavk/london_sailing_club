@@ -1,43 +1,21 @@
-<div class="panel panel-default">
+<div class="panel panel-default event-list">
   <div class="row">
-      <div class="col-md-6">
-        <%= event["name"] %>
-        <dl>
-          <dt>Description</dt>
-          <dd>
-            <%=h truncate(event["description"], length: 200, escape: false) %>
-            <%= link_to "Read more", event_url(event["id"], group: event["group"]["urlname"]) %>
-          </dd>
-          <dt>RSVPs</dt>
-          <dd><%= event["yes_rsvp_count"] %>/<%= event["rsvp_limit"] %></dd>
-          <dt>RSVP</dt>
-          <dd><%= link_to "RSVP", event_rsvp_path(event["id"]) %></dd>
-        </dl>
+    <div class="col-md-5">
+      <div class='event-text'>
+        <p class="grey_font event_title"><b><%= event["name"] %></b></p>
+        <br/>
+        <p class='organiser_event'>Organised by <%= event["event_hosts"].first["member_name"] %></p>
+        <p class='rsvp_event'><%= event["yes_rsvp_count"] %> people going</p>
+        <p class='rsvp_event'><%= event["rsvp_limit"].to_i - event["yes_rsvp_count"].to_i %> spaces left</p>
+        <br/>
+        <% if fee = event["fee"] %>
+          <p class='fee_event'>From</p>
+          <p class='fee_event fee_price'><b>£<%= fee["amount"] %> + £12</b> temp membership</p>
+        <% end %>
       </div>
-      <div class="col-md-6">
-        <%= image_tag('/download.jpeg') %>
-      </div>
-  </div>
-</div>
-
-<div class="panel panel-default">
-  <div class="panel-heading"><%= event["name"] %></div>
-  <div class="panel-body">
-    <dl>
-      <dt>Created at</dt>
-      <dd>
-        <%= Time.at(event["created"]).to_date %>
-      </dd>
-      <dt>Description</dt>
-      <dd>
-        <%=h truncate(event["description"], length: 200, escape: false) %>
-        <%= link_to "Read more", event_url(event["id"], group: event["group"]["urlname"]) %>
-      </dd>
-      <dt>RSVPs</dt>
-      <dd><%= event["yes_rsvp_count"] %>/<%= event["rsvp_limit"] %></dd>
-      <dt>RSVP</dt>
-      <dd><%= link_to "RSVP", event_rsvp_path(event["id"]) %></dd>
-    </dl>
-    <%= image_tag event["photo_url"] %>
+    </div>
+    <div class="col-md-7">
+      <%= image_tag('/boat_sunset.png', class: 'event_image') %>
+    </div>
   </div>
 </div>
