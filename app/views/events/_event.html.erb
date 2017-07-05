@@ -1,4 +1,26 @@
 <div class="panel panel-default">
+  <div class="row">
+      <div class="col-md-6">
+        <%= event["name"] %>
+        <dl>
+          <dt>Description</dt>
+          <dd>
+            <%=h truncate(event["description"], length: 200, escape: false) %>
+            <%= link_to "Read more", event_url(event["id"], group: event["group"]["urlname"]) %>
+          </dd>
+          <dt>RSVPs</dt>
+          <dd><%= event["yes_rsvp_count"] %>/<%= event["rsvp_limit"] %></dd>
+          <dt>RSVP</dt>
+          <dd><%= link_to "RSVP", event_rsvp_path(event["id"]) %></dd>
+        </dl>
+      </div>
+      <div class="col-md-6">
+        <%= image_tag('/download.jpeg') %>
+      </div>
+  </div>
+</div>
+
+<div class="panel panel-default">
   <div class="panel-heading"><%= event["name"] %></div>
   <div class="panel-body">
     <dl>

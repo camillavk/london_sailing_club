@@ -14,7 +14,7 @@ class EventsController < ApplicationController
 
   def rsvp
     if current_user.uid.present?
-      JSON.parse(`curl -d "key=#{Rails.application.secrets.meetup_api_key}&sign=true&event_id=#{params["event_id"]}&rsvp=yes&member_id=#{current_user.uid}" https://api.meetup.com/2/rsvp/`)
+      JSON.parse(`curl -d "key=#{Rails.application.secrets.meetup_api_key}&sign=true&event_id=#{params["event_id"]}&rsvp=yes&member_id=#{current_user.uid}&opt_to_pay=true" https://api.meetup.com/2/rsvp/`)
     else
       JSON.parse(`curl -d "key=#{Rails.application.secrets.meetup_api_key}&sign=true&event_id=#{params["event_id"]}&rsvp=yes" https://api.meetup.com/2/rsvp/`)
     end
