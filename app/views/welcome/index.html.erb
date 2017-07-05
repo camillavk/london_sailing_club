@@ -1,23 +1,21 @@
 <%= render "change_plan_modal" %>
 
-<%= render "selected_plan" %>
+<%= render "selected_plan" if @plan %>
 
 <% if !current_user %>
-  <br/>
-  <%= render "registration_navigation" %>
-
-  <div class="vc_row wpb_row vc_row-fluid vc_custom_1490131837893 vc_row-has-fill">
-    <br/>
-    <div class="wpb_column vc_column_container vc_col-sm-12">
-      <div class="vc_column-inner">
-        <div class="wpb_wrapper">
-          <div class="vc_row wpb_row vc_inner vc_row-fluid less-wide-please">
-            <div class="wpb_column vc_column_container vc_col-sm-12">
-              <div class="vc_column-inner">
-                <div class="wpb_wrapper">
-                  <div class="wpb_text_column wpb_content_element">
-                    <div class="wpb_wrapper">
-                      <h2>Join London Sailing Club</h2>
+  <div class="container login_container">
+    <div class="container login_title_container">
+      <div class="wpb_column vc_column_container vc_col-sm-12">
+        <div class="vc_column-inner">
+          <div class="wpb_wrapper">
+            <div class="vc_row wpb_row vc_inner vc_row-fluid less-wide-please">
+              <div class="wpb_column vc_column_container vc_col-sm-12">
+                <div class="vc_column-inner">
+                  <div class="wpb_wrapper">
+                    <div class="wpb_text_column wpb_content_element">
+                      <div class="wpb_wrapper">
+                        <h2 class="grey_font title">Join London Sailing Club</h2>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -31,12 +29,14 @@
   <br/>
 
     <div class="container">
-      <div class="row">
+      <div class="row row-eq-height">
         <div class="col-md-6">
-          <%= link_to "Login via Meetup", user_meetup_omniauth_authorize_path, class: "btn btn-primary" %>
+          <div class="center-block">
+            <%= link_to "Login via Meetup", user_meetup_omniauth_authorize_path, class: "btn meetup_button" %>
+          </div>
         </div>
         <div class="col-md-6 border-left">
-          <ul class="nav nav-tabs" role="tablist">
+          <ul class="nav nav-tabs tabs-login" role="tablist">
             <li role="presentation" class="active"><a href="#register" aria-controls="register" role="tab" data-toggle="tab">Register with email</a></li>
             <li role="presentation"><a href="#login" aria-controls="login" role="tab" data-toggle="tab">Already a member?</a></li>
           </ul>

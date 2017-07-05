@@ -1,0 +1,54 @@
+.login_container {
+  margin-top: 5%;
+  background-color: white;
+}
+
+.login_title_container {
+  margin-top: 2%;
+}
+
+.meetup_button {
+  background-color: #D82D36;
+  color: white !important;
+  border-color: #848484 !important;
+  min-width: 15em !important;
+  min-height: 2.8em !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  line-height: 45px !important;
+  text-transform: none !important;
+}
+
+.meetup_button:hover {
+  background-color: #D82D36 !important;
+}
+
+.tabs-login {
+  border-bottom: none !important;
+
+}
+
+li {
+  padding-right: 2em;
+}
+
+li.active > a {
+  border: none !important;
+  border-bottom: solid 2px #000000 !important;
+  display: inline !important;
+  padding-bottom: 3px !important;
+}
+
+li > a {
+  /*border: none !important;*/
+  color: #555;
+  border: solid 1px #848484 !important;
+  display: inline !important;
+  padding-bottom: 3px !important;
+  font-weight: 400;
+  border-radius: 0 !important;
+}
+
+li > a:hover {
+  color: #555 !important;
+}
