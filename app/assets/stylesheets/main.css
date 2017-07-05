@@ -2,6 +2,10 @@
   background-color: #F5F5F5;
 }
 
+p {
+  font-weight: 100 !important;
+}
+
 .container {
   /*background-color: white;*/
 }
@@ -11,7 +15,12 @@
 }
 
 .title {
-  font-weight: 400;
+  font-weight: 800;
+  font-size: 2em;
+  width: 40%;
+  margin: auto;
+  line-height: 120%;
+  padding-top: 3%;
 }
 
 .center-block {
@@ -26,6 +35,12 @@
   display: -webkit-flex;
   flex-wrap: wrap;
   min-height: 442px !important;
+}
+
+.row-center-align {
+  width: 80%;
+  margin: auto;
+  margin-top: 5%;
 }
 
 .text-link {

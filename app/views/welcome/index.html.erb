@@ -53,23 +53,71 @@
     </div>
   </div>
 <% else %>
-  <div class="container">
+  <div class="container choose_plan_container">
     <div class="panel panel default">
-      <h2>Select a plan</h2>
-      <%= link_to content_tag(:span, "Patron member"), :action => "change_plan", :plan => "patron" %></br>
-      <%= link_to content_tag(:span, "Standard member"), :action => "change_plan", :plan => "standard" %></br>
-      <%= form_tag stripe_charges_path do %>
-        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="One year membership"
-          data-amount="2600"
-          data-locale="auto"
-          data-email="<%= current_user.email if current_user.present? %>"
-          data-currency="GBP"></script>
-        <button class="button-stripe" type="submit">
-          One year membership
-        </button>
-      <% end %>
+      <h2 class="grey_font title">Please choose a membership plan to continue</h2>
+      <div class="row row-eq-height row-center-align">
+        <div class="col-md-4">
+          <div class="pay-as-you-sail">
+            <div class='membership-text'>
+              <br/>
+              <br/>
+              <h3>Pay As You Sail</h3>
+              <h2><b>£12/trip</b></h2>
+              <p>Ideal if you only want to sail once a year or have never tried sailing before.</p>
+              <br/>
+              <br/>
+              <br/>
+              <%= link_to content_tag(:span, "Join Now", class: 'membership-button'), :action => "change_plan", :plan => "none" %>
+              <br/>
+              <br/>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="standard">
+            <div class='membership-text'>
+              <p class='small'>Most popular</p>
+              <h3>Annual Member</h3>
+              <h2><b>£24/year</b></h2>
+              <p>Our most common membership that helps support the club. Allows attendance of unlimited trips, access to members only events as well as posting trips to club members.</p>
+              <%= link_to content_tag(:span, "Join Now", class: 'membership-button'), :action => "change_plan", :plan => "standard" %>
+              <br/>
+              <br/>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class='patron'>
+            <div class='membership-text'>
+              <br/>
+              <br/>
+              <h3>Patron Member</h3>
+              <h2><b>£36/year</b></h2>
+              <p>All of the same benefits as an annual member but helps support the club even more. Receive a free club mug and burgee in your first year.</p>
+              <br/>
+              <%= link_to content_tag(:span, "Join Now", class: 'membership-button'), :action => "change_plan", :plan => "patron" %>
+              <br/>
+              <br/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <%= form_tag stripe_charges_path do %>
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description="One year membership"
+            data-amount="2600"
+            data-locale="auto"
+            data-email="<%= current_user.email if current_user.present? %>"
+            data-currency="GBP"></script>
+          <button class="button-stripe" type="submit">
+            Unsure? Click here to sign up for one year only.
+          </button>
+        <% end %>
+        <br/>
+      </div>
     </div>
   </div>
 <% end %>

@@ -1,0 +1,32 @@
+.choose_plan_container {
+  margin-top: 3%;
+}
+
+.pay-as-you-sail {
+  text-align: center;
+}
+
+.standard {
+  background-color: #FBEBDB;
+  text-align: center;
+}
+
+.membership-text {
+  width: 80%;
+  margin: auto;
+}
+
+p.small {
+  margin-bottom: 0px !important;
+  padding-top: 1.5em !important;
+  font-weight: 100;
+  font-size: small;
+}
+
+.membership-button {
+  text-decoration: none;
+  background-color: #0B111C;
+  color: white;
+  padding: 1em 5em;
+  font-size: 1em;
+}

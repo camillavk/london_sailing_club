@@ -1,11 +1,13 @@
 button.button-stripe {
      background: none !important;
-     color: #5d47d7;
+     color: #818D93;
      border: none;
      padding: 0 !important;
+     padding-left: 10em !important;
      font: inherit;
      cursor: pointer;
      font-weight: 400;
+     text-decoration: underline;
 }
 
 /* Hide original stripe button */
