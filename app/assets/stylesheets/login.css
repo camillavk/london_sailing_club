@@ -25,7 +25,6 @@
 
 .tabs-login {
   border-bottom: none !important;
-
 }
 
 li {
@@ -51,4 +50,17 @@ li > a {
 
 li > a:hover {
   color: #555 !important;
+}
+
+input[type="submit"] {
+  background-color: #166BFA !important;
+  border-color: #848484 !important;
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  text-transform: none !important;
+}
+
+.remember_me_login {
+  padding-left: 5%;
+
 }

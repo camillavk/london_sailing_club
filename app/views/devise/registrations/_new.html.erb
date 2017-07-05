@@ -16,10 +16,20 @@
 
   <div class="form-group">
     <%= f.telephone_field :number, placeholder: "Enter mobile number", class: "form-control" %>
-    <em><small>We occasionally send out last minute trip availability by SMS. You can opt out on your profile.</small></em>
+
+    <em><small>We occasionally send out last minute trip availability via SMS, you can opt out on your profile.
+      By clicking continue you agree to the clubs
+      <button type="button" class="text-link" data-toggle="modal" data-target="#termsConditions">
+        terms of service
+      </button>
+      and agree to be bound by the
+      <button type="button" class="text-link" data-toggle="modal" data-target="#termsConditions">
+        club constitution
+      </button>
+      .</small></em>
   </div>
 
-  <div class="actions">
+  <div class="actions center-block">
     <%= f.submit "Continue" %>
   </div>
 <% end %>
