@@ -1,7 +1,5 @@
 <%= render "change_plan_modal" %>
 
-<%= render "selected_plan" if @plan %>
-
 <% if !current_user %>
   <div class="container login_container">
     <div class="container login_title_container">
@@ -68,7 +66,7 @@
               <br/>
               <br/>
               <br/>
-              <%= link_to content_tag(:span, "Join Now", class: 'membership-button'), :action => "change_plan", :plan => "none" %>
+              <%= link_to content_tag(:span, "Join Now", class: 'membership-button'), :action => "change_plan", :plan => "pay_as_you_sail" %>
               <br/>
               <br/>
             </div>
