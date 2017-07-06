@@ -1,21 +1,25 @@
-<div class="panel panel-default event-list">
-  <div class="row">
-    <div class="col-md-5">
-      <div class='event-text'>
-        <p class="grey_font event_title"><b><%= event["name"] %></b></p>
-        <br/>
-        <p class='organiser_event'>Organised by <%= event["event_hosts"].first["member_name"] %></p>
-        <p class='rsvp_event'><%= event["yes_rsvp_count"] %> people going</p>
-        <p class='rsvp_event'><%= event["rsvp_limit"].to_i - event["yes_rsvp_count"].to_i %> spaces left</p>
-        <br/>
-        <% if fee = event["fee"] %>
-          <p class='fee_event'>From</p>
-          <p class='fee_event fee_price'><b>£<%= fee["amount"] %> + £12</b> temp membership</p>
-        <% end %>
+<a href="<%= event["event_url"] %>">
+  <div class="panel panel-default event-list">
+    <div class="row">
+      <div class="col-md-5">
+        <div class='event-text'>
+          <p class="grey_font event_title"><b><%= event["name"] %></b></p>
+
+          <p class='start_time_event'><%= Time.at(event["time"] / 1000).utc.to_datetime.to_s(:long) %></p>
+          <p class='organiser_event'>Organised by <%= event["event_hosts"].first["member_name"] %></p>
+          <p class='rsvp_event'><%= event["yes_rsvp_count"] %> people going</p>
+          <p class='rsvp_event'><%= event["rsvp_limit"].to_i - event["yes_rsvp_count"].to_i %> spaces left</p>
+          <br/>
+          <% if fee = event["fee"] %>
+            <p class='fee_event'>From</p>
+            <p class='fee_event fee_price'><b>£<%= fee["amount"] %> + £12</b> temp membership</p>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <% img = event["photo_url"] || '/boat_sunset.png' %>
+        <%= image_tag(img, class: 'event_image') %>
       </div>
     </div>
-    <div class="col-md-7">
-      <%= image_tag('/boat_sunset.png', class: 'event_image') %>
-    </div>
   </div>
-</div>
+</a>

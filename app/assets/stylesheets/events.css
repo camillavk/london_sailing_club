@@ -1,6 +1,9 @@
 .event-list {
   border: 2px solid #848484;
-  box-shadow: 5px 5px 5px #848484;
+  box-shadow: 2px 2px 2px #848484;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 3%;
 }
 
 .event_title {
@@ -34,5 +37,9 @@
 }
 
 .organiser_event {
+  color: #818D93;
+}
+
+.start_time_event {
   color: #818D93;
 }
