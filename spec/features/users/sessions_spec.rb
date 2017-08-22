@@ -11,13 +11,13 @@ feature "Sessions" do
     they_are_able_to_logout
   end
 
-  scenario "it knows what payment plan you have selected" do
+  xscenario "it knows what payment plan you have selected" do
     given_a_user_has_come_from_wordpress
     when_they_are_on_the_registration_page
     their_selected_plan_is_visible
   end
 
-  scenario "it allows you to change your selected payment plan" do
+  xscenario "it allows you to change your selected payment plan" do
     given_a_user_has_come_from_wordpress
     when_they_are_on_the_registration_page
     when_they_change_their_plan_selection

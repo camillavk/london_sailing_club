@@ -60,5 +60,7 @@ class WelcomeController < ApplicationController
 
   def set_user_as_active
     current_user.update_attribute :active, true
+    @plan = nil
+    session.delete(:plan)
   end
 end

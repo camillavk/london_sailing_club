@@ -1282,4 +1282,645 @@ http_interactions:
         }
     http_version: 
   recorded_at: Sat, 27 May 2017 10:31:59 GMT
+- request:
+    method: get
+    uri: https://api-sandbox.gocardless.com/payments?customer=CU0001TPH9HG27
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - gocardless_pro/v1.1.0 ruby/2.2.0p0 ruby/2.2.0 x86_64-darwin14 faraday/0.9.1
+      Gocardless-Version:
+      - '2015-07-06'
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer sandbox_I4CViaFJazkmhIUYgaMq2orxTWoA-v567Q1DJlGe
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 22 Aug 2017 17:56:05 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d488f7cbe153cc362e95a4af1a74c2d891503424565; expires=Wed, 22-Aug-18
+        17:56:05 GMT; path=/; domain=.gocardless.com; HttpOnly
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-store
+      Etag:
+      - W/"180b7e5937911bbc7f0cbc506288d539"
+      X-Request-Id:
+      - ae3904ca-3b58-4599-823c-9c33fe002498
+      Vary:
+      - Origin
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=31556926; includeSubDomains; preload
+      Ratelimit-Limit:
+      - '1000'
+      Ratelimit-Remaining:
+      - '999'
+      Ratelimit-Reset:
+      - Tue, 22 Aug 2017 17:57:00 GMT
+      Server:
+      - cloudflare-nginx
+      Cf-Ray:
+      - 3927b4ee2c3421f2-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"payments":[{"id":"PM00047V095MNN","created_at":"2017-04-30T15:18:42.648Z","charge_date":"2017-05-08","amount":3600,"description":null,"currency":"GBP","status":"paid_out","amount_refunded":0,"reference":null,"metadata":{},"links":{"mandate":"MD0001P9VEJ3EG","creditor":"CR00004P78BAGF","payout":"PO0000EKYDCZSW","subscription":"SB00005P78XR5C"}},{"id":"PM00047V07HTCJ","created_at":"2017-04-30T15:13:07.300Z","charge_date":"2017-05-08","amount":2400,"description":null,"currency":"GBP","status":"paid_out","amount_refunded":0,"reference":null,"metadata":{},"links":{"mandate":"MD0001P9VEJ3EG","creditor":"CR00004P78BAGF","payout":"PO0000EKYDCZSW","subscription":"SB00005P75KMZ3"}}],"meta":{"cursors":{"before":null,"after":null},"limit":50}}'
+    http_version: 
+  recorded_at: Tue, 22 Aug 2017 17:56:06 GMT
+- request:
+    method: get
+    uri: https://api.stripe.com/v1/charges?customer=cus_AiWFtNzSvY3gpC
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Stripe/v1 RubyBindings/2.9.0
+      Authorization:
+      - Bearer sk_test_OifeKAktWHIfsMhd3wjyoMoG
+      Content-Type:
+      - application/x-www-form-urlencoded
+      X-Stripe-Client-User-Agent:
+      - '{"bindings_version":"2.9.0","lang":"ruby","lang_version":"2.2.0 p0 (2014-12-25)","platform":"x86_64-darwin14","engine":"ruby","publisher":"stripe","uname":"Darwin
+        Camillas-Air-2 16.6.0 Darwin Kernel Version 16.6.0: Fri Apr 14 16:21:16 PDT
+        2017; root:xnu-3789.60.24~6/RELEASE_X86_64 x86_64","hostname":"Camillas-Air-2"}'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 22 Aug 2017 17:56:07 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '14711'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, HEAD, OPTIONS, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '300'
+      Cache-Control:
+      - no-cache, no-store
+      Request-Id:
+      - req_7EaW9qrjbL4zN7
+      Stripe-Version:
+      - '2017-04-06'
+      Strict-Transport-Security:
+      - max-age=31556926; includeSubDomains
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "object": "list",
+          "data": [
+            {
+              "id": "ch_1AN5krGLEYJ8RkCGN2t5J6vo",
+              "object": "charge",
+              "amount": 2600,
+              "amount_refunded": 0,
+              "application": null,
+              "application_fee": null,
+              "balance_transaction": "txn_1AN5ksGLEYJ8RkCGAZJl7Hoj",
+              "captured": true,
+              "created": 1495656409,
+              "currency": "gbp",
+              "customer": "cus_AiWFtNzSvY3gpC",
+              "description": "tests@email.com",
+              "destination": null,
+              "dispute": null,
+              "failure_code": null,
+              "failure_message": null,
+              "fraud_details": {},
+              "invoice": null,
+              "livemode": false,
+              "metadata": {},
+              "on_behalf_of": null,
+              "order": null,
+              "outcome": {
+                "network_status": "approved_by_network",
+                "reason": null,
+                "risk_level": "normal",
+                "seller_message": "Payment complete.",
+                "type": "authorized"
+              },
+              "paid": true,
+              "receipt_email": null,
+              "receipt_number": null,
+              "refunded": false,
+              "refunds": {
+                "object": "list",
+                "data": [],
+                "has_more": false,
+                "total_count": 0,
+                "url": "/v1/charges/ch_1AN5krGLEYJ8RkCGN2t5J6vo/refunds"
+              },
+              "review": null,
+              "shipping": null,
+              "source": {
+                "id": "card_1AN5DAGLEYJ8RkCGIFlEsQ5z",
+                "object": "card",
+                "address_city": null,
+                "address_country": null,
+                "address_line1": null,
+                "address_line1_check": null,
+                "address_line2": null,
+                "address_state": null,
+                "address_zip": null,
+                "address_zip_check": null,
+                "brand": "Visa",
+                "country": "US",
+                "customer": "cus_AiWFtNzSvY3gpC",
+                "cvc_check": null,
+                "dynamic_last4": null,
+                "exp_month": 1,
+                "exp_year": 2019,
+                "fingerprint": "UbLhyQnjcdYT5pDD",
+                "funding": "credit",
+                "last4": "4242",
+                "metadata": {},
+                "name": "tests@email.com",
+                "tokenization_method": null
+              },
+              "source_transfer": null,
+              "statement_descriptor": null,
+              "status": "succeeded",
+              "transfer_group": null
+            },
+            {
+              "id": "ch_1AN5SJGLEYJ8RkCGPdDBnR6j",
+              "object": "charge",
+              "amount": 2400,
+              "amount_refunded": 0,
+              "application": null,
+              "application_fee": null,
+              "balance_transaction": "txn_1AN5SJGLEYJ8RkCGxYPC2L5T",
+              "captured": true,
+              "created": 1495655259,
+              "currency": "gbp",
+              "customer": "cus_AiWFtNzSvY3gpC",
+              "description": "tests@email.com",
+              "destination": null,
+              "dispute": null,
+              "failure_code": null,
+              "failure_message": null,
+              "fraud_details": {},
+              "invoice": null,
+              "livemode": false,
+              "metadata": {},
+              "on_behalf_of": null,
+              "order": null,
+              "outcome": {
+                "network_status": "approved_by_network",
+                "reason": null,
+                "risk_level": "normal",
+                "seller_message": "Payment complete.",
+                "type": "authorized"
+              },
+              "paid": true,
+              "receipt_email": null,
+              "receipt_number": null,
+              "refunded": false,
+              "refunds": {
+                "object": "list",
+                "data": [],
+                "has_more": false,
+                "total_count": 0,
+                "url": "/v1/charges/ch_1AN5SJGLEYJ8RkCGPdDBnR6j/refunds"
+              },
+              "review": null,
+              "shipping": null,
+              "source": {
+                "id": "card_1AN5DAGLEYJ8RkCGIFlEsQ5z",
+                "object": "card",
+                "address_city": null,
+                "address_country": null,
+                "address_line1": null,
+                "address_line1_check": null,
+                "address_line2": null,
+                "address_state": null,
+                "address_zip": null,
+                "address_zip_check": null,
+                "brand": "Visa",
+                "country": "US",
+                "customer": "cus_AiWFtNzSvY3gpC",
+                "cvc_check": null,
+                "dynamic_last4": null,
+                "exp_month": 1,
+                "exp_year": 2019,
+                "fingerprint": "UbLhyQnjcdYT5pDD",
+                "funding": "credit",
+                "last4": "4242",
+                "metadata": {},
+                "name": "tests@email.com",
+                "tokenization_method": null
+              },
+              "source_transfer": null,
+              "statement_descriptor": null,
+              "status": "succeeded",
+              "transfer_group": null
+            },
+            {
+              "id": "ch_1AN5RfGLEYJ8RkCGbicS3GFm",
+              "object": "charge",
+              "amount": 2400,
+              "amount_refunded": 0,
+              "application": null,
+              "application_fee": null,
+              "balance_transaction": "txn_1AN5RfGLEYJ8RkCGTuAf29kE",
+              "captured": true,
+              "created": 1495655219,
+              "currency": "gbp",
+              "customer": "cus_AiWFtNzSvY3gpC",
+              "description": "tests@email.com",
+              "destination": null,
+              "dispute": null,
+              "failure_code": null,
+              "failure_message": null,
+              "fraud_details": {},
+              "invoice": null,
+              "livemode": false,
+              "metadata": {},
+              "on_behalf_of": null,
+              "order": null,
+              "outcome": {
+                "network_status": "approved_by_network",
+                "reason": null,
+                "risk_level": "normal",
+                "seller_message": "Payment complete.",
+                "type": "authorized"
+              },
+              "paid": true,
+              "receipt_email": null,
+              "receipt_number": null,
+              "refunded": false,
+              "refunds": {
+                "object": "list",
+                "data": [],
+                "has_more": false,
+                "total_count": 0,
+                "url": "/v1/charges/ch_1AN5RfGLEYJ8RkCGbicS3GFm/refunds"
+              },
+              "review": null,
+              "shipping": null,
+              "source": {
+                "id": "card_1AN5DAGLEYJ8RkCGIFlEsQ5z",
+                "object": "card",
+                "address_city": null,
+                "address_country": null,
+                "address_line1": null,
+                "address_line1_check": null,
+                "address_line2": null,
+                "address_state": null,
+                "address_zip": null,
+                "address_zip_check": null,
+                "brand": "Visa",
+                "country": "US",
+                "customer": "cus_AiWFtNzSvY3gpC",
+                "cvc_check": null,
+                "dynamic_last4": null,
+                "exp_month": 1,
+                "exp_year": 2019,
+                "fingerprint": "UbLhyQnjcdYT5pDD",
+                "funding": "credit",
+                "last4": "4242",
+                "metadata": {},
+                "name": "tests@email.com",
+                "tokenization_method": null
+              },
+              "source_transfer": null,
+              "statement_descriptor": null,
+              "status": "succeeded",
+              "transfer_group": null
+            },
+            {
+              "id": "ch_1AN5PDGLEYJ8RkCGGNUhDioc",
+              "object": "charge",
+              "amount": 2400,
+              "amount_refunded": 0,
+              "application": null,
+              "application_fee": null,
+              "balance_transaction": "txn_1AN5PDGLEYJ8RkCG4elIgHSF",
+              "captured": true,
+              "created": 1495655067,
+              "currency": "gbp",
+              "customer": "cus_AiWFtNzSvY3gpC",
+              "description": "tests@email.com",
+              "destination": null,
+              "dispute": null,
+              "failure_code": null,
+              "failure_message": null,
+              "fraud_details": {},
+              "invoice": null,
+              "livemode": false,
+              "metadata": {},
+              "on_behalf_of": null,
+              "order": null,
+              "outcome": {
+                "network_status": "approved_by_network",
+                "reason": null,
+                "risk_level": "normal",
+                "seller_message": "Payment complete.",
+                "type": "authorized"
+              },
+              "paid": true,
+              "receipt_email": null,
+              "receipt_number": null,
+              "refunded": false,
+              "refunds": {
+                "object": "list",
+                "data": [],
+                "has_more": false,
+                "total_count": 0,
+                "url": "/v1/charges/ch_1AN5PDGLEYJ8RkCGGNUhDioc/refunds"
+              },
+              "review": null,
+              "shipping": null,
+              "source": {
+                "id": "card_1AN5DAGLEYJ8RkCGIFlEsQ5z",
+                "object": "card",
+                "address_city": null,
+                "address_country": null,
+                "address_line1": null,
+                "address_line1_check": null,
+                "address_line2": null,
+                "address_state": null,
+                "address_zip": null,
+                "address_zip_check": null,
+                "brand": "Visa",
+                "country": "US",
+                "customer": "cus_AiWFtNzSvY3gpC",
+                "cvc_check": null,
+                "dynamic_last4": null,
+                "exp_month": 1,
+                "exp_year": 2019,
+                "fingerprint": "UbLhyQnjcdYT5pDD",
+                "funding": "credit",
+                "last4": "4242",
+                "metadata": {},
+                "name": "tests@email.com",
+                "tokenization_method": null
+              },
+              "source_transfer": null,
+              "statement_descriptor": null,
+              "status": "succeeded",
+              "transfer_group": null
+            },
+            {
+              "id": "ch_1AN5NnGLEYJ8RkCGxWWWKdQa",
+              "object": "charge",
+              "amount": 2400,
+              "amount_refunded": 0,
+              "application": null,
+              "application_fee": null,
+              "balance_transaction": "txn_1AN5NnGLEYJ8RkCGjey5SzWH",
+              "captured": true,
+              "created": 1495654979,
+              "currency": "gbp",
+              "customer": "cus_AiWFtNzSvY3gpC",
+              "description": "tests@email.com",
+              "destination": null,
+              "dispute": null,
+              "failure_code": null,
+              "failure_message": null,
+              "fraud_details": {},
+              "invoice": null,
+              "livemode": false,
+              "metadata": {},
+              "on_behalf_of": null,
+              "order": null,
+              "outcome": {
+                "network_status": "approved_by_network",
+                "reason": null,
+                "risk_level": "normal",
+                "seller_message": "Payment complete.",
+                "type": "authorized"
+              },
+              "paid": true,
+              "receipt_email": null,
+              "receipt_number": null,
+              "refunded": false,
+              "refunds": {
+                "object": "list",
+                "data": [],
+                "has_more": false,
+                "total_count": 0,
+                "url": "/v1/charges/ch_1AN5NnGLEYJ8RkCGxWWWKdQa/refunds"
+              },
+              "review": null,
+              "shipping": null,
+              "source": {
+                "id": "card_1AN5DAGLEYJ8RkCGIFlEsQ5z",
+                "object": "card",
+                "address_city": null,
+                "address_country": null,
+                "address_line1": null,
+                "address_line1_check": null,
+                "address_line2": null,
+                "address_state": null,
+                "address_zip": null,
+                "address_zip_check": null,
+                "brand": "Visa",
+                "country": "US",
+                "customer": "cus_AiWFtNzSvY3gpC",
+                "cvc_check": null,
+                "dynamic_last4": null,
+                "exp_month": 1,
+                "exp_year": 2019,
+                "fingerprint": "UbLhyQnjcdYT5pDD",
+                "funding": "credit",
+                "last4": "4242",
+                "metadata": {},
+                "name": "tests@email.com",
+                "tokenization_method": null
+              },
+              "source_transfer": null,
+              "statement_descriptor": null,
+              "status": "succeeded",
+              "transfer_group": null
+            },
+            {
+              "id": "ch_1AN5JsGLEYJ8RkCGLOoLMubI",
+              "object": "charge",
+              "amount": 2400,
+              "amount_refunded": 0,
+              "application": null,
+              "application_fee": null,
+              "balance_transaction": "txn_1AN5JsGLEYJ8RkCGfEYWF9w9",
+              "captured": true,
+              "created": 1495654736,
+              "currency": "gbp",
+              "customer": "cus_AiWFtNzSvY3gpC",
+              "description": "tests@email.com",
+              "destination": null,
+              "dispute": null,
+              "failure_code": null,
+              "failure_message": null,
+              "fraud_details": {},
+              "invoice": null,
+              "livemode": false,
+              "metadata": {},
+              "on_behalf_of": null,
+              "order": null,
+              "outcome": {
+                "network_status": "approved_by_network",
+                "reason": null,
+                "risk_level": "normal",
+                "seller_message": "Payment complete.",
+                "type": "authorized"
+              },
+              "paid": true,
+              "receipt_email": null,
+              "receipt_number": null,
+              "refunded": false,
+              "refunds": {
+                "object": "list",
+                "data": [],
+                "has_more": false,
+                "total_count": 0,
+                "url": "/v1/charges/ch_1AN5JsGLEYJ8RkCGLOoLMubI/refunds"
+              },
+              "review": null,
+              "shipping": null,
+              "source": {
+                "id": "card_1AN5DAGLEYJ8RkCGIFlEsQ5z",
+                "object": "card",
+                "address_city": null,
+                "address_country": null,
+                "address_line1": null,
+                "address_line1_check": null,
+                "address_line2": null,
+                "address_state": null,
+                "address_zip": null,
+                "address_zip_check": null,
+                "brand": "Visa",
+                "country": "US",
+                "customer": "cus_AiWFtNzSvY3gpC",
+                "cvc_check": "pass",
+                "dynamic_last4": null,
+                "exp_month": 1,
+                "exp_year": 2019,
+                "fingerprint": "UbLhyQnjcdYT5pDD",
+                "funding": "credit",
+                "last4": "4242",
+                "metadata": {},
+                "name": "tests@email.com",
+                "tokenization_method": null
+              },
+              "source_transfer": null,
+              "statement_descriptor": null,
+              "status": "succeeded",
+              "transfer_group": null
+            },
+            {
+              "id": "ch_1AN5JFGLEYJ8RkCGMr6Wxhu5",
+              "object": "charge",
+              "amount": 2400,
+              "amount_refunded": 0,
+              "application": null,
+              "application_fee": null,
+              "balance_transaction": "txn_1AN5JFGLEYJ8RkCGB2xnPsqH",
+              "captured": true,
+              "created": 1495654697,
+              "currency": "gbp",
+              "customer": "cus_AiWFtNzSvY3gpC",
+              "description": "tests@email.com",
+              "destination": null,
+              "dispute": null,
+              "failure_code": null,
+              "failure_message": null,
+              "fraud_details": {},
+              "invoice": null,
+              "livemode": false,
+              "metadata": {},
+              "on_behalf_of": null,
+              "order": null,
+              "outcome": {
+                "network_status": "approved_by_network",
+                "reason": null,
+                "risk_level": "normal",
+                "seller_message": "Payment complete.",
+                "type": "authorized"
+              },
+              "paid": true,
+              "receipt_email": null,
+              "receipt_number": null,
+              "refunded": false,
+              "refunds": {
+                "object": "list",
+                "data": [],
+                "has_more": false,
+                "total_count": 0,
+                "url": "/v1/charges/ch_1AN5JFGLEYJ8RkCGMr6Wxhu5/refunds"
+              },
+              "review": null,
+              "shipping": null,
+              "source": {
+                "id": "card_1AN5DAGLEYJ8RkCGIFlEsQ5z",
+                "object": "card",
+                "address_city": null,
+                "address_country": null,
+                "address_line1": null,
+                "address_line1_check": null,
+                "address_line2": null,
+                "address_state": null,
+                "address_zip": null,
+                "address_zip_check": null,
+                "brand": "Visa",
+                "country": "US",
+                "customer": "cus_AiWFtNzSvY3gpC",
+                "cvc_check": "pass",
+                "dynamic_last4": null,
+                "exp_month": 1,
+                "exp_year": 2019,
+                "fingerprint": "UbLhyQnjcdYT5pDD",
+                "funding": "credit",
+                "last4": "4242",
+                "metadata": {},
+                "name": "tests@email.com",
+                "tokenization_method": null
+              },
+              "source_transfer": null,
+              "statement_descriptor": null,
+              "status": "succeeded",
+              "transfer_group": null
+            }
+          ],
+          "has_more": false,
+          "url": "/v1/charges"
+        }
+    http_version: 
+  recorded_at: Tue, 22 Aug 2017 17:56:07 GMT
 recorded_with: VCR 3.0.3

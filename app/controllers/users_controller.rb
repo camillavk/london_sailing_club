@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 
   def show
     @payments = load_payments
+    @member_type = display_member_type
   end
 
   private
@@ -53,6 +54,20 @@ class UsersController < ApplicationController
     stripe_payments = []
     payments.each { |payment| stripe_payments << [payment, "stripe"] }
     stripe_payments
+  end
+
+  def display_member_type
+    if !@user.active
+      "You haven't selected a membership yet"
+    elsif @payments.nil?
+      'You are a Pay As You Go Sailor'
+    elsif @payments.first.first.amount == 2400 && @payments.first.first.status != "cancelled"
+      'You are an Annual member'
+    elsif @payments.first.first.amount == 3600 && @payments.first.first.status != "cancelled"
+      'You are a Patron member'
+    else
+      "You haven't selected a membership yet"
+    end
   end
 
   def permitted_attributes

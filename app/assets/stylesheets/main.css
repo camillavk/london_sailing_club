@@ -23,6 +23,10 @@ p {
   padding-top: 3%;
 }
 
+.sub-title {
+  text-align: center;
+}
+
 .center-block {
   display: flex;
   height: 100%;
