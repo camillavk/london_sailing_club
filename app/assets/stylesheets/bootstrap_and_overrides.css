@@ -23,3 +23,12 @@ footer {
   position: absolute !important;
   bottom: 0 !important;
 }
+
+.alert {
+  padding: 5px;
+  margin: 20px 0 20px;
+  background: #EAD7D7;
+  color: #893A39;
+  font-weight: bold;
+  text-align: center;
+}

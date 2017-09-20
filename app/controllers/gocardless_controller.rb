@@ -2,12 +2,13 @@ class GocardlessController < ApplicationController
   before_action :load_gocardless_client
 
   def mandate_and_payment
+    session.delete(:plan) if current_user.payment_date > 1.year.ago
     if current_user.mandate?
       begin
         collect_payment
         render 'complete_mandate'
       rescue => e
-        flash[:error] = "Oops"
+        flash[:error] = "Oops, are you sure you want to do that?"
         session.delete(:plan)
       end
     else
