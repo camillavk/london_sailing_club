@@ -61,9 +61,9 @@ class UsersController < ApplicationController
       "You haven't selected a membership yet"
     elsif @payments.nil?
       'You are a Pay As You Go Sailor'
-    elsif last_active_payment?(2400)
+    elsif @payments.first.first.amount == 2400 && @payments.first.first.status != "cancelled"
       'You are an Annual member'
-    elsif last_active_payment?(3600)
+    elsif @payments.first.first.amount == 3600 && @payments.first.first.status != "cancelled"
       'You are a Patron member'
     else
       "You haven't selected a membership yet"
@@ -72,12 +72,5 @@ class UsersController < ApplicationController
 
   def permitted_attributes
     params.require(:user).permit(:email, :number, :sms_alerts, :first_name, :surname)
-  end
-
-  def last_active_payment?(amount)
-    payment = @payments.first.first
-    payment.amount == amount &&
-    payment.status != "cancelled" &&
-    payment.charge_date > 1.year.ago
   end
 end
