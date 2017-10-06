@@ -1,9 +1,12 @@
 class User < ActiveRecord::Base
+  rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:meetup]
+
+  after_create :assign_default_role
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -17,14 +20,9 @@ class User < ActiveRecord::Base
     super && provider.blank?
   end
 
-  def roles=(roles)
-    roles = [*roles].map { |r| r.to_sym }
-    self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)
-  end
+  private
 
-  def roles
-    ROLES.reject do |r|
-      ((roles_mask.to_i || 0) & 2**ROLES.index(r)).zero?
-    end
+  def assign_default_role
+    self.add_role(:free_member) if self.roles.blank?
   end
 end
