@@ -1,14 +1,16 @@
 class GocardlessController < ApplicationController
   before_action :load_gocardless_client
 
+  # rubocop:disable MethodLength
+  # rubocop:disable AbcSize
   def mandate_and_payment
     session.delete(:plan) if current_user.payment_date > 1.year.ago
     if current_user.mandate?
       begin
         collect_payment
         render 'complete_mandate'
-      rescue => e
-        flash[:error] = "Oops, are you sure you want to do that?"
+      rescue
+        flash[:error] = 'Oops, are you sure you want to do that?'
         session.delete(:plan)
       end
     else
@@ -43,7 +45,7 @@ class GocardlessController < ApplicationController
     @redirect_flow = @gocardless_client.redirect_flows.create(
       params: {
         description: 'London Sailing Club Membership',
-        session_token: "#{current_user.id}",
+        session_token: current_user.id.to_s,
         success_redirect_url: success_url, # Success page
         prefilled_customer: {
           email: current_user.email
@@ -55,8 +57,8 @@ class GocardlessController < ApplicationController
 
   def complete_user_mandate
     @complete_mandate = @gocardless_client.redirect_flows.complete(
-      "#{@redirect_flow_id}",
-      params: { session_token: "#{current_user.id}" }
+      @redirect_flow_id.to_s,
+      params: { session_token: current_user.id.to_s }
     )
   end
 
@@ -71,31 +73,31 @@ class GocardlessController < ApplicationController
   def subscription_payment
     subscription = @gocardless_client.subscriptions.create(
       params: {
-        amount: "#{session[:price_in_cents]}",
+        amount: session[:price_in_cents].to_s,
         currency: 'GBP',
         interval_unit: 'yearly',
         links: {
-          mandate: "#{current_user.mandate}"
+          mandate: current_user.mandate.to_s
         },
         metadata: {
-          plan: "#{session[:plan]}"
+          plan: session[:plan].to_s
         }
       },
       headers: {
-        'Idempotency-Key': "#{session[:plan]}_#{Date.today}_#{current_user.mandate}"
+        'Idempotency-Key': "#{session[:plan]}_#{Time.zone.today}_#{current_user.mandate}"
       }
     )
 
-    current_user.update_attributes payment_date: Date.today,
-                                   payment_amount: "#{Money.new(session[:price_in_cents], 'GBP')}",
-                                   subscription_id: "#{subscription.id}",
+    current_user.update_attributes payment_date: Time.zone.today,
+                                   payment_amount: Money.new(session[:price_in_cents], 'GBP').to_s,
+                                   subscription_id: subscription.id.to_s,
                                    payment_type: 'GoCardless'
 
     session.delete(:plan)
   end
 
   def update_user_with_payment_mandate
-    current_user.update_attributes mandate: "#{@complete_mandate.links.mandate}",
-                                   gocardless_id: "#{@complete_mandate.links.customer}"
+    current_user.update_attributes mandate: @complete_mandate.links.mandate.to_s,
+                                   gocardless_id: @complete_mandate.links.customer.to_s
   end
 end

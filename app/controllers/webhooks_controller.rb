@@ -7,7 +7,7 @@ class WebhooksController < ApplicationController
   def create
     # We recommend storing your webhook endpoint secret in an environment variable
     # for security, but you could include it as a string directly in your code
-    secret = 
+    # secret =
 
     # In a Rack app (e.g. Sinatra), access the POST body with
     # `request.body.tap(&:rewind).read`

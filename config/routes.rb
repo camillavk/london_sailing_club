@@ -1,23 +1,23 @@
 Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  # See how all your routes lay out with 'rake routes'.
   # devise_scope :user do
-  #   get "users/oauth2/meetup" => "users/omniauth_callbacks#meetup", as: :meetup_authorise
-  #   post "users/oauth2/meetup" => "users/omniauth_callbacks#meetup", as: :meetup_authorise_post
-  #   get "users/oauth2/meetup/callback" => "users/omniauth_callbacks#meetup", as: :meetup_authorise_callback
-  #   post "users/oauth2/meetup/callback" => "users/omniauth_callbacks#meetup", as: :meetup_authorise_callback_post
+  #   get 'users/oauth2/meetup' => 'users/omniauth_callbacks#meetup', as: :meetup_authorise
+  #   post 'users/oauth2/meetup' => 'users/omniauth_callbacks#meetup', as: :meetup_authorise_post
+  #   get 'users/oauth2/meetup/callback' => 'users/omniauth_callbacks#meetup', as: :meetup_authorise_callback
+  #   post 'users/oauth2/meetup/callback' => 'users/omniauth_callbacks#meetup', as: :meetup_authorise_callback_post
   # end
 
-  # You can have the root of your site routed with "root"
+  # You can have the root of your site routed with 'root'
   root 'welcome#index'
 
   get 'welcome/change_plan' => 'welcome#change_plan'
 
-  get "gocardless/mandate_and_payment"
+  get 'gocardless/mandate_and_payment'
 
-  get "gocardless/complete_mandate"
+  get 'gocardless/complete_mandate'
 
-  get "gocardless/cancel"
+  get 'gocardless/cancel'
 
   resources :stripe_charges, only: [:new, :create]
 
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     get :rsvp
   end
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, :controllers => { :omniauth_callbacks => 'users/omniauth_callbacks' }
   resources :users, only: [:show, :edit, :update]
 
   # Example of regular route:

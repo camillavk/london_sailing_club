@@ -7,7 +7,7 @@ class WelcomeController < ApplicationController
       redirect_to edit_user_path(current_user)
     elsif ready_for_payment? && @price != 0
       redirect_to gocardless_mandate_and_payment_url
-    elsif ready_for_payment? && @price == 0
+    elsif ready_for_payment? && @price.zero?
       set_user_as_active
       redirect_to events_path
       flash[:success] = "You're now a Pay-as-you-sail member!"
@@ -28,11 +28,11 @@ class WelcomeController < ApplicationController
   end
 
   def set_plan_price
-    session[:price_in_cents] = if @plan == "Pay_as_you_sail"
+    session[:price_in_cents] = if @plan == 'Pay_as_you_sail'
                                  0
-                               elsif @plan == "Standard"
+                               elsif @plan == 'Standard'
                                  2400
-                               elsif @plan == "Patron"
+                               elsif @plan == 'Patron'
                                  3600
                                else
                                  0
@@ -54,8 +54,8 @@ class WelcomeController < ApplicationController
 
   def active_member?
     user_complete? &&
-    !current_user.payment_date.nil? &&
-    current_user.payment_date > 1.year.ago
+      !current_user.payment_date.nil? &&
+      current_user.payment_date > 1.year.ago
   end
 
   def set_user_as_active

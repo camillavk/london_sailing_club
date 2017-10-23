@@ -6,8 +6,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    @current_page = request.env["HTTP_REFERER"]
-    if @user.update_attributes(permitted_attributes) && @current_page.include?("/edit")
+    @current_page = request.env['HTTP_REFERER']
+    if @user.update_attributes(permitted_attributes) && @current_page.include?('/edit')
       redirect_to root_url
     else
       redirect_to user_url(@user)
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
                                  .list(params: { customer: @user.gocardless_id })
                                  .records
     gocardless_payments = []
-    payments.each { |payment| gocardless_payments << [payment, "gocardless"] }
+    payments.each { |payment| gocardless_payments << [payment, 'gocardless'] }
     gocardless_payments
   end
 
@@ -52,10 +52,11 @@ class UsersController < ApplicationController
     return if @user.stripe_token.nil?
     payments = Stripe::Charge.list(customer: @user.stripe_token).data
     stripe_payments = []
-    payments.each { |payment| stripe_payments << [payment, "stripe"] }
+    payments.each { |payment| stripe_payments << [payment, 'stripe'] }
     stripe_payments
   end
 
+  # rubocop:disable MethodLength
   def display_member_type
     if !@user.active
       "You haven't selected a membership yet"
@@ -77,7 +78,7 @@ class UsersController < ApplicationController
   def last_active_payment?(amount)
     payment = @payments.first.first
     payment.amount == amount &&
-    payment.status != "cancelled" &&
-    payment.charge_date > 1.year.ago
+      payment.status != 'cancelled' &&
+      payment.charge_date > 1.year.ago
   end
 end
