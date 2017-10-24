@@ -6,7 +6,7 @@ describe UsersController do
       it 'when not yet active' do
         user = create(:user)
         get :show, id: user
-        expect(response.body).to match /selected a membership yet/m
+        expect(response.body).to match(/selected a membership yet/m)
       end
     end
 
@@ -17,7 +17,7 @@ describe UsersController do
       end
 
       it 'when user is a pay as you sail member' do
-        expect(response.body).to match /Pay As You Go/m
+        expect(response.body).to match(/Pay As You Go/m)
       end
     end
   end

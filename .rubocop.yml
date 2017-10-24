@@ -1,4 +1,6 @@
 AllCops:
+  TargetRubyVersion: 2.2
+  TargetRailsVersion: 4.2
   Exclude:
     - "db/**/*"
     - "config/**/*"
@@ -14,7 +16,7 @@ Metrics/LineLength:
   Max: 120
 
 Style/StringLiterals:
-  EnforcedStyle: double_quotes
+  EnforcedStyle: single_quotes
 
 Documentation:
   Enabled: false

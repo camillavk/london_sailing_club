@@ -1,8 +1,7 @@
 class StripeChargesController < ApplicationController
   rescue_from Stripe::CardError, with: :catch_exception
 
-  def new
-  end
+  def new; end
 
   def create
     StripeChargesServices.new(charges_params, current_user).call
@@ -21,8 +20,8 @@ class StripeChargesController < ApplicationController
   end
 
   def update_user_with_payment_details
-    current_user.update_attributes payment_date: Date.today,
-                                   payment_amount: "#{Money.new(2600, 'GBP')}",
+    current_user.update_attributes payment_date: Time.zone.today,
+                                   payment_amount: Money.new(2600, 'GBP').to_s,
                                    payment_type: 'Stripe'
   end
 end

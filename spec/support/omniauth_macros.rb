@@ -4,14 +4,14 @@ module OmniauthMacros
     # The mock_auth configuration allows you to set per-provider (or default)
     # authentication hashes to return during integration testing.
     OmniAuth.config.mock_auth[:meetup] = {
-      "provider" => "meetup",
-      "uid" => "123545",
-      "user_info" => {
-        "name" => "mockuser"
+      'provider' => 'meetup',
+      'uid' => '123545',
+      'user_info' => {
+        'name' => 'mockuser'
       },
-      "credentials" => {
-        "token" => "mock_token",
-        "secret" => "mock_secret"
+      'credentials' => {
+        'token' => 'mock_token',
+        'secret' => 'mock_secret'
       }
     }
   end
