@@ -53,9 +53,7 @@ class WelcomeController < ApplicationController
   end
 
   def active_member?
-    user_complete? &&
-      !current_user.payment_date.nil? &&
-      current_user.payment_date > 1.year.ago
+    user_complete? && !current_user.payment_date.nil?
   end
 
   def set_user_as_active
