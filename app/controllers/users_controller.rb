@@ -61,7 +61,7 @@ class UsersController < ApplicationController
     if !@user.active
       "You haven't selected a membership yet"
     elsif @payments.nil?
-      'You are a Pay As You Go Sailor'
+      original_user_or_pay_as_you_go
     elsif last_active_payment?(2400)
       'You are an Annual member'
     elsif last_active_payment?(3600)
@@ -80,5 +80,16 @@ class UsersController < ApplicationController
     payment.amount == amount &&
       payment.status != 'cancelled' &&
       payment.charge_date > 1.year.ago
+  end
+
+  def original_user_or_pay_as_you_go
+    case @user.payment_type
+    when 'patron'
+      'You are a Patron member'
+    when 'standard'
+      'You are an Annual member'
+    else
+      'You are a Pay As You Go Sailor'
+    end
   end
 end

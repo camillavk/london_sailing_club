@@ -16,4 +16,8 @@ class User < ActiveRecord::Base
   def email_required?
     super && provider.blank?
   end
+
+  def active_member?
+    !payment_date.nil?
+  end
 end

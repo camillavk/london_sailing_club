@@ -20,5 +20,16 @@ describe UsersController do
         expect(response.body).to match(/Pay As You Go/m)
       end
     end
+
+    context 'For initial users' do
+      before(:each) do
+        user = create(:user, active: true, payment_type: 'patron', payment_date: (Time.zone.today - 3.months))
+        get :show, id: user
+      end
+
+      it 'shows the user member type' do
+        expect(response.body).to match(/You are a Patron member/m)
+      end
+    end
   end
 end
